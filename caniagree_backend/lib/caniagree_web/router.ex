@@ -14,13 +14,7 @@ defmodule CaniagreeWeb.Router do
   end
 
   scope "/", CaniagreeWeb do
-    pipe_through :browser # Use the default browser stack
-
-    get "/", PageController, :index
+    pipe_through :api
+    resources "/paragraphs", ParagraphController, except: [:new, :edit]
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", CaniagreeWeb do
-  #   pipe_through :api
-  # end
 end
