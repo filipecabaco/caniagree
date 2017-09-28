@@ -1,0 +1,9 @@
+version: '3'
+services:
+  caniagree:
+    build: .
+    image: caniagree
+    container_name: caniagree
+    command: yarn start
+    ports:
+      - '3030:3030'

@@ -1,0 +1,3 @@
+export const SET_ID = 'SET_ID'
+export const BUTTON_CLICKED = 'BUTTON_CLICKED'
+export const SAMPLE_DATA_ACTION = 'SAMPLE_DATA_ACTION'
