@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Can I Agree?</title>
+</head>
+<body>
+  <div id="caniagree">
+  </div>
+  <script type="text/javascript">
+    document.onreadystatechange = () => {
+      if (document.readyState == "complete") {
+        ReactApp.CanIAgree.start(
+          document.getElementById('caniagree'),
+          {
+            id: '1'
+          }
+        )
+      }
+    }
+  </script>
+</body>
+</html>
