@@ -1,5 +1,5 @@
-import reducer from './reducer'
+import paragraphsReducer from './paragraphs'
 
 export default {
-  reducer: reducer
+  paragraphs: paragraphsReducer
 }
