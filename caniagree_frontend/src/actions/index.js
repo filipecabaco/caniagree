@@ -12,4 +12,10 @@ export const downvoteParagraph = actionCreator(
   id => ({ id })
 )
 
-export const sampleDataAction = actionCreator(actionTypes.SAMPLE_DATA_ACTION)
+export const getServices = actionCreator(actionTypes.GET_SERVICES)
+
+export const addServices = actionCreator(actionTypes.ADD_SERVICES, services => ({services}))
+export const clearServices = actionCreator(actionTypes.CLEAR_SERVICES)
+
+export const filterServices = actionCreator(actionTypes.FILTER_SERVICES, term => ({term}))
+export const clearFilter = actionCreator(actionTypes.CLEAR_FILTER)

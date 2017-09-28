@@ -1,15 +1,27 @@
-export async function sampleDataGateway() {
-  const sampleData = await getSampleDataAsync()
+export async function sampleDataGateway () {
+  const services = await getSampleDataAsync()
 
-  return { sampleData }
+  return { services }
 }
 
 const getSampleDataAsync = () =>
-  Promise.resolve({
-    sampleData: [
-      { id: '1', text: 'this is some' },
-      { id: '2', text: 'random data' },
-      { id: '3', text: 'so we can see' },
-      { id: '4', text: 'that everything is working' }
-    ]
-  })
+  Promise.resolve([
+    { id: '1', self: 'service/1', name: 'this is some' },
+    { id: '2', self: 'service/2', name: 'random data' },
+    { id: '3', self: 'service/3', name: 'so we can see' },
+    { id: '4', self: 'service/4', name: 'that everything is working' }
+  ])
+
+export async function paragraphsSmpleDataGateway () {
+  const services = await getParagraphsSampleDataAsync()
+
+  return { services }
+}
+
+const getParagraphsSampleDataAsync = () =>
+  Promise.resolve([
+    { id: '1', self: 'service/1', name: 'this is some' },
+    { id: '2', self: 'service/2', name: 'random data' },
+    { id: '3', self: 'service/3', name: 'so we can see' },
+    { id: '4', self: 'service/4', name: 'that everything is working' }
+  ])
