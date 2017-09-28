@@ -3,9 +3,10 @@ import { bindActionCreators } from 'redux'
 import App from '../../components/App'
 import { buttonClicked } from '../../actions'
 
-export const mapStateToProps = ({ reducer }) => ({
-  id: reducer.id,
-  title: reducer.pageTitle
+export const mapStateToProps = ({ filterServices, services }) => ({
+  services: filterServices
+    ? services.filter(({name}) => name.includes(filterServices))
+    : []
 })
 
 export const mapDispatchToProps = dispatch =>

@@ -1,3 +1,7 @@
 import loggerMiddleware from './logger'
+import routing from './routing'
 
-export default [loggerMiddleware]
+export default [
+  routing,
+  loggerMiddleware
+]

@@ -1,14 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Search from '../../containers/search'
 
-const App = ({ onButtonClick }) => (
+const App = ({ services }) => (
   <div>
-    <div>Can I Agree?</div>
+    <p>cenas</p>
+    <Search />
+    {
+      services.map(({self, name, id}) => (
+        <div key={id}>
+          <span>{self}</span>
+          <span>{name}</span>
+          <span>{id}</span>
+        </div>
+      ))
+    }
   </div>
 )
 
 App.propTypes = {
-  onButtonClick: PropTypes.func.isRequired
+  services: PropTypes.arrayOf(PropTypes.shape({
+    self: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired
+  })).isRequired
 }
 
 export default App

@@ -1,6 +1,6 @@
 import { fork } from 'redux-saga/effects'
-import sampleData from './sampleData'
+import getServices from './getServices'
 
 export default function*() {
-  yield fork(sampleData)
+  yield fork(getServices)
 }

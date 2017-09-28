@@ -3,9 +3,12 @@ import { bindActionCreators } from 'redux'
 import ParagraphsList from '../../components/ParagraphsList'
 import { upvoteParagraph, downvoteParagraph } from '../../actions'
 
-export const mapStateToProps = ({ paragraphs }) => ({
-  paragraphs: paragraphs.items
-})
+export const mapStateToProps = ({ paragraphs }, ownProps) => {
+  console.log('hmmm', ownProps)
+  return {
+    paragraphs: paragraphs.items
+  }
+}
 
 export const mapDispatchToProps = dispatch =>
   bindActionCreators(

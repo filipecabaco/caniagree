@@ -1,5 +1,9 @@
-import paragraphsReducer from './paragraphs'
+import paragraphs from './paragraphs'
+import filterServices from './filterServices'
+import services from './services'
 
 export default {
-  paragraphs: paragraphsReducer
+  filterServices,
+  paragraphs,
+  services
 }
