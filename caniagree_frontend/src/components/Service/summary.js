@@ -7,13 +7,13 @@ const UP_THRESHOLD = 0.8
 const DOWN_THRESHOLD = 0.4
 const VOTES_THRESHOLD = 10
 
-const Summary = ({ 
-  title, 
-  totalUpvotes = 0, 
+const Summary = ({
+  title,
+  totalUpvotes = 0,
   totalDownvotes = 0,
   onParagraphToggleClick,
 }) => {
-  const warningLevel = getWarningLevel(0, 0)
+  const warningLevel = getWarningLevel(totalUpvotes, totalDownvotes)
 
   return (
     <section className="container-fluid terms-header">
@@ -101,7 +101,7 @@ const getWarningLevel = (totalUpvotes, totalDownvotes) => {
       error: false,
       ok: false,
       warning: false
-    }  
+    }
   }
 
   const error = upPercentage <= DOWN_THRESHOLD
