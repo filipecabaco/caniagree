@@ -4,12 +4,16 @@ import { FILTER_SERVICES } from '../constants/action.types'
 
 export function* filterServicesSaga ({
   payload: {
+    force = false,
     term = ''
   } = {}
 } = {}) {
-  const services = yield select(({services}) => services.filter(({name}) => name.includes(term)))
+  const services = yield select(({services}) =>
+    services.filter(({name}) => name.toLowerCase().includes(term.toLowerCase())))
 
-  if (services.length === 1) {
+  console.log('what?', force, term)
+
+  if (force && services.length === 1) {
     yield put(setRoute({path: services[0].self}))
   } else {
     yield put(setRoute({path: `/?q=${term}`}))
