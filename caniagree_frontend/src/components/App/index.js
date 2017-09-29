@@ -5,27 +5,31 @@ import { Container, Row, Col } from 'reactstrap'
 
 const App = ({ services }) => (
   <Container>
-    <Row>
-      <Col>
-        <h1>Can I Agree?</h1>
-      </Col>
-    </Row>
+    <Row className="justify-content-center">
+      <Col lg="6">
+        <Row className="mb-2">
+          <Col>
+            <h1>Can I Agree?</h1>
+          </Col>
+        </Row>
 
-    <Row>
-      <Col>
-        <Search />
-      </Col>
-    </Row>
+        <Row>
+          <Col>
+            <Search />
+          </Col>
+        </Row>
 
-    <Row>
-      <Col>
-        {services.map(({ self, name, id }) => (
-          <div key={id}>
-            <span>{self}</span>
-            <span>{name}</span>
-            <span>{id}</span>
-          </div>
-        ))}
+        <Row>
+          <Col>
+            {services.map(({ self, name, id }) => (
+              <div key={id}>
+                <span>{self}</span>
+                <span>{name}</span>
+                <span>{id}</span>
+              </div>
+            ))}
+          </Col>
+        </Row>
       </Col>
     </Row>
   </Container>
