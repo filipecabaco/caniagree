@@ -6,6 +6,8 @@ export const setRoute = actionCreator(actionTypes.SET_ROUTE)
 export const upvoteParagraph = actionCreator(actionTypes.UPVOTE_PARAGRAPH)
 export const downvoteParagraph = actionCreator(actionTypes.DOWNVOTE_PARAGRAPH)
 
+export const toggleParagraphs = actionCreator(actionTypes.TOGGLE_PARAGRAPH)
+
 export const getServices = actionCreator(actionTypes.GET_SERVICES)
 export const getParagraphs = actionCreator(actionTypes.GET_PARAGRAPHS)
 
