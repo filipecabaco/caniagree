@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 const logger = require('./logger')
 
@@ -13,6 +14,8 @@ if (process.env.APP) {
     templatePath: resolve(process.cwd(), 'src', 'index.ejs')
   })
 }
+
+app.use('/assets', express.static(path.join(__dirname, 'public')))
 
 const port = argv.port || process.env.PORT || 3030
 

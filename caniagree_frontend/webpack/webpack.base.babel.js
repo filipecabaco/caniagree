@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const CaseSensitivePlugin = require('case-sensitive-paths-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = options => ({
   entry: Object.assign(
@@ -60,7 +61,8 @@ module.exports = options => ({
     }),
     new webpack.BannerPlugin({
       banner: `CanIAgree Application`
-    })
+    }),
+    new CopyWebpackPlugin([{ from: '../markup/assets', to: 'assets' }])
   ]),
   resolve: {
     modules: ['src', 'node_modules'],
