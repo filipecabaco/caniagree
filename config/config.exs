@@ -7,7 +7,8 @@ use Mix.Config
 
 # General application configuration
 config :caniagree,
-  ecto_repos: [Caniagree.Repo]
+  ecto_repos: [Caniagree.Repo],
+  api_key: "PqS0AyBQshRHGKHgvjBDXUutyqzGmrPeaBANVMo2"
 
 # Configures the endpoint
 config :caniagree, CaniagreeWeb.Endpoint,
