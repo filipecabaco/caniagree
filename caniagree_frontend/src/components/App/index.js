@@ -14,11 +14,7 @@ const App = () => {
               <h1>
                 <img src={logo} alt="Can I Agree?" height="45px" />
               </h1>
-              <form>
-                <div className="form-group">
-                  <Search />
-                </div>
-              </form>
+              <Search />
             </div>
           </div>
         </div>
