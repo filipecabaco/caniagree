@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Row, Col } from 'reactstrap'
 
 const Paragraph = ({
   id,
@@ -13,24 +12,47 @@ const Paragraph = ({
   const upVoteHandler = () => onUpvoteClick({ id })
   const downVoteHandler = () => onDownvoteClick({ id })
 
-  return (
-    <Row>
-      <Col sm='8' className='text'>
-        <p>{body}</p>
-      </Col>
+  const totalVotes = up_vote + down_vote
+  const ratio = up_vote / totalVotes
 
-      <Col sm='4' className='info'>
+  return (
+    <div className='row'>
+      <div className='col-sm-8 text'>
+        {
+          totalVotes >= 500
+            ? ratio >= 0.8
+              ? (
+                <div className='alert alert-alt alert-success' role='alert'>
+                  <p>{body}</p>
+                </div>
+              )
+              : ratio <= 0.4
+                ? (
+                  <div className='alert alert-alt alert-danger' role='alert'>
+                    <p>{body}</p>
+                  </div>
+                )
+                : (
+                  <div className='alert alert-alt alert-warning' role='alert'>
+                    <p>{body}</p>
+                  </div>
+                )
+            : (<p>{body}</p>)
+        }
+      </div>
+
+      <div className='col-sm-4 info'>
         <ul className='small list-inline'>
           <li className='upvote' onClick={upVoteHandler}>
-            <a href="#"><i className='icon fa-arrow-up' aria-hidden='true'></i> Upvote</a> <span>({up_vote})</span>
+            <a href='javascript:void(0)'><i className='icon fa-arrow-up' aria-hidden='true'></i> Upvote</a> <span>({up_vote})</span>
           </li>
 
           <li className='downvote' onClick={downVoteHandler}>
-            <a href="#"><i className='icon fa-arrow-down' aria-hidden='true'></i> Downvote</a> <span>({down_vote})</span>
+            <a href='javascript:void(0)'><i className='icon fa-arrow-down' aria-hidden='true'></i> Downvote</a> <span>({down_vote})</span>
           </li>
         </ul>
-      </Col>
-    </Row>
+      </div>
+    </div>
   )
 }
 

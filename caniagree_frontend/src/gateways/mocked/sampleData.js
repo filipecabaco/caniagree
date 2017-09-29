@@ -7,9 +7,16 @@ const services = [
 ]
 
 let paragraphId = 0
+let _ = false
 
 const nextParagraphId = () => '' + paragraphId++
-const randomVotes = () => Math.floor(Math.random() * 1000)
+const randomVotes = () => {
+  const mul = _ ? 1000 : 600
+
+  _ = !_
+
+  return Math.floor(Math.random() * mul)
+}
 
 const paragraphs = {
   '1': {

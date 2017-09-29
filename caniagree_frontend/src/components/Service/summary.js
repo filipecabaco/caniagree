@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-const UP_THRESHOLD = 0.6
-const DOWN_THRESHOLD = 0.2
+const UP_THRESHOLD = 0.8
+const DOWN_THRESHOLD = 0.4
 
 const Summary = ({ title, totalUpvotes = 0, totalDownvotes = 0 }) => {
   const warningLevel = getWarningLevel(totalUpvotes, totalDownvotes)
@@ -81,10 +81,9 @@ const SummaryMessage = ({ warning, error, ok }) => {
 const getWarningLevel = (totalUpvotes, totalDownvotes) => {
   const totalVotes = totalUpvotes + totalDownvotes
   const upPercentage = totalUpvotes / totalVotes
-  const downPercentage = totalDownvotes / totalVotes
 
-  const error = downPercentage > DOWN_THRESHOLD
-  const ok = upPercentage > UP_THRESHOLD
+  const error = upPercentage <= DOWN_THRESHOLD
+  const ok = upPercentage >= UP_THRESHOLD
 
   return {
     error,
