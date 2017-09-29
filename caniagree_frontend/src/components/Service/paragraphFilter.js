@@ -27,7 +27,7 @@ class ParagraphFilter extends React.Component {
         return (
             <ul className="small list-inline">
                 <li>
-                    <a href="" onClick={this.toggleHandler}>
+                    <a href="javascript:void(0)" onClick={this.toggleHandler}>
                         {icon}
                     </a>
                 </li>

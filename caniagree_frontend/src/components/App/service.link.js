@@ -10,7 +10,7 @@ class ServiceLink extends React.Component {
     return (
       <div className="col-sm-4" onClick={this.onClick}>
         <h2>
-          <a href={'/'+self}>{name}</a>
+          <a href="javascript:void(0)">{name}</a>
         </h2>
       </div>
     )
