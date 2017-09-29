@@ -50,4 +50,22 @@ defmodule CaniagreeWeb.ServiceController do
 
     json conn, resolved
   end
+
+  def submit(conn, %{"domain" => domain, "name" => name, "url" => url}) do
+    # %{"domain" => domain, "name" => name, "url" => url} = Poison.decode!(body)
+    text_list = Caniagree.Parser.parse(url)
+    save_texts(text_list)
+    Caniagree.Services.create_service
+
+    conn
+    |> put_status(201)
+    |> send_resp
+  end
+
+  defp save_texts(text_list) do
+    for text <- text_list do
+      Caniagree.Services.create_paragraph(
+        %{body: text, up_vote: 0, down_vote: 0})
+    end
+  end
 end
