@@ -5,7 +5,7 @@
 // Called when the user clicks on the browser action.
 
 let context = {
-    api_endpoint: "https://caniagree.herokuapp.com/"
+    api_endpoint: "http://localhost:4000/"
 }
 
 chrome.browserAction.onClicked.addListener(function(tab) {
