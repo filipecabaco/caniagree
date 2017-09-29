@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ListGroup, ListGroupItem, Row, Col } from 'reactstrap'
+import { Row, Col } from 'reactstrap'
 
 const Paragraph = ({
   id,
@@ -19,16 +19,16 @@ const Paragraph = ({
         <p>{body}</p>
       </Col>
 
-      <Col sm='4'>
-        <ListGroup>
-          <ListGroupItem className='upvote' onClick={upVoteHandler}>
-            <i className='icon fa-arrow-up' aria-hidden='true'></i> Upvote <span>({up_vote})</span>
-          </ListGroupItem>
+      <Col sm='4' className='info'>
+        <ul className='small list-inline'>
+          <li className='upvote' onClick={upVoteHandler}>
+            <a href="#"><i className='icon fa-arrow-up' aria-hidden='true'></i> Upvote</a> <span>({up_vote})</span>
+          </li>
 
-          <ListGroupItem className='downvote' onClick={downVoteHandler}>
-            <i className='icon fa-arrow-down' aria-hidden='true'></i> Downvote <span>({down_vote})</span>
-          </ListGroupItem>
-        </ListGroup>
+          <li className='downvote' onClick={downVoteHandler}>
+            <a href="#"><i className='icon fa-arrow-down' aria-hidden='true'></i> Downvote</a> <span>({down_vote})</span>
+          </li>
+        </ul>
       </Col>
     </Row>
   )
