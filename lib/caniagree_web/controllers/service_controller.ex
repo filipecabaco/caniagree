@@ -39,4 +39,15 @@ defmodule CaniagreeWeb.ServiceController do
       send_resp(conn, :no_content, "")
     end
   end
+
+  def paragraphs(conn, %{"id" => id}) do
+    %{paragraphs: paragraphs} = Services.get_service!(id)
+
+    resolved = paragraphs
+    |> Enum.map(&Services.get_paragraph!/1)
+    |> Enum.map(&Map.from_struct/1)
+    |> Enum.map(&(Map.delete(&1, :__meta__)))
+
+    json conn, resolved
+  end
 end
