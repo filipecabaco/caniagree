@@ -5,7 +5,7 @@ defmodule Caniagree.Repo.Migrations.CreateServices do
     create table(:services) do
       add :name, :string
       add :domain, :string
-      add :paragraphs, {:array, :string}
+      add :paragraphs, {:array, :integer}
 
       timestamps()
     end

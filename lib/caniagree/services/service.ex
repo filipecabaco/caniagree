@@ -7,7 +7,7 @@ defmodule Caniagree.Services.Service do
   schema "services" do
     field :domain, :string
     field :name, :string
-    field :paragraphs, {:array, :string}
+    field :paragraphs, {:array, :integer}
 
     timestamps()
   end

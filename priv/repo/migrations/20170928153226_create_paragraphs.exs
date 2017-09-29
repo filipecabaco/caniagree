@@ -3,7 +3,7 @@ defmodule Caniagree.Repo.Migrations.CreateParagraphs do
 
   def change do
     create table(:paragraphs) do
-      add :body, :string
+      add :body, :text
       add :up_vote, :integer
       add :down_vote, :integer
 
