@@ -6,8 +6,8 @@ export default (state = initialState, {type, payload: {services = []} = {}} = {}
   switch (type) {
     case actionTypes.SET_SERVICES:
       return services.map(
-        ({id, self, name}) =>
-          ({id, self, name})
+        ({id, name}) =>
+          ({id, name})
       )
     case actionTypes.CLEAR_SERVICES:
       return initialState

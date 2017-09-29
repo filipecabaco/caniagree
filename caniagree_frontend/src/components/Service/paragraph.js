@@ -19,7 +19,7 @@ const Paragraph = ({
     <div className='row'>
       <div className='col-sm-8 text'>
         {
-          totalVotes >= 500
+          totalVotes >= 10
             ? ratio >= 0.8
               ? (
                 <div className='alert alert-alt alert-success' role='alert'>
@@ -57,7 +57,7 @@ const Paragraph = ({
 }
 
 Paragraph.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   body: PropTypes.string.isRequired,
   up_vote: PropTypes.number.isRequired,
   down_vote: PropTypes.number.isRequired,

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 
 class ServiceLink extends React.Component {
   onClick = () =>
-    this.props.onClick({path: this.props.self})
+    this.props.onClick({path: 'service/' + this.props.id})
 
   render () {
-    const {self, name, id} = this.props
+    const {name, id} = this.props
     return (
       <div className="col-sm-4" onClick={this.onClick}>
         <h2>
@@ -19,9 +19,8 @@ class ServiceLink extends React.Component {
 
 ServiceLink.propTypes = {
   onClick: PropTypes.func.isRequired,
-  self: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.number.isRequired
 }
 
 export default ServiceLink

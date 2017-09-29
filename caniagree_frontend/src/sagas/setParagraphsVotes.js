@@ -1,30 +1,21 @@
-import { call, put, fork, takeLatest } from 'redux-saga/effects'
+import { call, fork, takeLatest } from 'redux-saga/effects'
 import { UPVOTE_PARAGRAPH, DOWNVOTE_PARAGRAPH } from '../constants/action.types'
-import {
-  setParagraphUpvote,
-  setParagraphDownvote
-} from '../gateways/mocked/setParagraphVotesGateway'
+import {paragraphUpVote, paragraphDownVote} from '../gateways/services'
 
-export function* setParagraphsUpvotesSaga(
-  action,
-  gateway = setParagraphUpvote
-) {
+export function* setParagraphsUpvotesSaga (action) {
   const id = action.payload.id
 
   console.log(`Set upvote saga ${id}`)
 
-  yield call(setParagraphUpvote, { id })
+  yield call(paragraphUpVote, id)
 }
 
-export function* setParagraphsDownvotesSaga(
-  action,
-  gateway = setParagraphDownvote
-) {
+export function* setParagraphsDownvotesSaga (action) {
   const id = action.payload.id
 
   console.log(`Set downvote saga ${id}`)
 
-  yield call(setParagraphDownvote, { id })
+  yield call(paragraphDownVote, id)
 }
 
 export default function*() {
