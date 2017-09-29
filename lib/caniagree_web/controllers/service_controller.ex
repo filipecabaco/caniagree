@@ -67,7 +67,8 @@ defmodule CaniagreeWeb.ServiceController do
   defp save_texts_and_get_ids([], result), do: result
   defp save_texts_and_get_ids([text | rest], result) do
     id = insert_text(text)
-    save_texts_and_get_ids(rest, [id | result])
+    new_result = result ++ [id]
+    save_texts_and_get_ids(rest, new_result)
   end
 
   defp insert_text(text) do
