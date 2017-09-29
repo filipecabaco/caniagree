@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Paragraph from './paragraph'
-import { Container } from 'reactstrap'
+import Summary from './summary'
+import ParagraphsList from './paragraphs.list'
 
 const Service = ({
   onDownvoteClick,
@@ -10,23 +10,32 @@ const Service = ({
   serviceId,
   name
 }) => {
-  if (paragraphs.length < 1) {
-    return null
-  }
+  const {
+    totalUpvotes,
+    totalDownvotes
+  } = paragraphs.reduce((totals, paragraph) => {
+    totals.totalUpvotes += paragraph.up_vote
+    totals.totalDownvotes += paragraph.down_vote
+
+    return totals
+  }, {totalUpvotes: 0, totalDownvotes: 0})
 
   return (
-    <Container>
-      {paragraphs.map((paragraph, index) => (
-        <Paragraph
-          key={index}
-          {...paragraph}
-          up_vote={paragraph.up_vote}
-          down_vote={paragraph.down_vote}
-          onUpvoteClick={onUpvoteClick}
-          onDownvoteClick={onDownvoteClick}
-        />
-      ))}
-    </Container>
+    <div className='results'>
+      <header></header>
+
+      <Summary
+        title={name}
+        totalUpvotes={totalUpvotes}
+        totalDownvotes={totalDownvotes}
+      />
+
+      <ParagraphsList
+        onDownvoteClick={onDownvoteClick}
+        onUpvoteClick={onUpvoteClick}
+        paragraphs={paragraphs}
+      />
+    </div>
   )
 }
 
