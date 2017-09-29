@@ -14,7 +14,6 @@ export default store => next => action => {
       const filteredServices = services.filter(({name}) => name.includes(term))
 
       if (filteredServices.length === 1) {
-        console.log('change route to', filteredServices[0].self)
         store.dispatch(routerActions.push(filteredServices[0].self))
       }
   }

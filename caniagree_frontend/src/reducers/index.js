@@ -1,9 +1,9 @@
-import paragraphs from './paragraphs'
 import filterServices from './filterServices'
 import services from './services'
+import service from './service'
 
 export default {
   filterServices,
-  paragraphs,
-  services
+  services,
+  service
 }

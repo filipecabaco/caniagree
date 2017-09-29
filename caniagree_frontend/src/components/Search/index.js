@@ -10,7 +10,7 @@ class Search extends React.Component {
     const {value} = this.state
 
     if (value) {
-      this.props.filterServices(value)
+      this.props.filterServices({term: value})
     } else {
       this.props.clearFilter()
     }
