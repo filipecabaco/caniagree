@@ -5,7 +5,8 @@
   "permissions": [
     "activeTab",
     "tabs",
-    "<all_urls>"
+      "<all_urls>",
+      "https://caniagree.herokuapp.com/*"
   ],
   "background": {
     "scripts": ["background.js"],

@@ -3,17 +3,24 @@
 // found in the LICENSE file.
 
 // Called when the user clicks on the browser action.
-chrome.browserAction.onClicked.addListener(function(tab) {
-  // var newURL = "http://stackoverflow.com/";
-  //TODO chrome.tabs.create({ url: newURL });
 
+let context = {
+    api_endpoint: "https://caniagree.herokuapp.com/"
+}
+
+chrome.browserAction.onClicked.addListener(function(tab) {
   chrome.tabs.getSelected(null, function(tab) {
-    var tabUrl = tab.url;
-    var testUrl = "https://caniagree.herokuapp.com/services"
-    fetch(testUrl).then(function(response) {
-        return response.json();
+    let tabUrl = tab.url;
+    let listServicesUrl = context.api_endpoint + "services"
+    fetch(listServicesUrl).then(function(response) {
+        return response.json()
     }).then(function(data) {
-      alert(data);
+      data.data.forEach(function(element) {
+        if(element.domain == tabUrl) {
+          let redirectUrl = context.api_endpoint + "service/" + element.id
+          chrome.tabs.create({ url: redirectUrl});
+        }
+      });
     })
   });
 });
