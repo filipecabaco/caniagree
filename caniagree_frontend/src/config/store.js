@@ -5,7 +5,7 @@ import createReducer from './reducer'
 import createMiddleware from './middleware'
 import sagas from '../sagas'
 
-function enableHotReload(store) {
+function enableHotReload (store) {
   if (module.hot) {
     module.hot.accept('./reducer', () => {
       const nextReducer = require('./reducer').default
@@ -14,7 +14,7 @@ function enableHotReload(store) {
   }
 }
 
-function configureStore(history) {
+function configureStore (history) {
   const additionalReducers = {
     routing: routerReducer
   }

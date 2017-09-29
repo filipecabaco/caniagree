@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import App from '../../components/App'
-import { buttonClicked } from '../../actions'
+import App from '../components/App'
+import { buttonClicked } from '../actions'
 
 export const mapStateToProps = ({ filterServices, services }) => ({
   services: filterServices

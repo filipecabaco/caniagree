@@ -5,9 +5,9 @@ import { Router } from 'react-router'
 import createRoutes from './config/routes'
 
 class Root extends React.Component {
-  render() {
+  render () {
     const { store, history } = this.props
-    const routes = createRoutes()
+    const routes = createRoutes(store.dispatch)
 
     return (
       <Provider store={store}>

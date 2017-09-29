@@ -1,10 +1,9 @@
 import { syncHistoryWithStore } from 'react-router-redux'
 import { createHistory } from 'history'
 import configureStore from './store'
-import { setId, getServices } from '../actions'
+import { getServices } from '../actions'
 
 const setup = (dispatch, { id }) => {
-  dispatch(setId(id))
   dispatch(getServices())
 }
 

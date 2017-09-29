@@ -2,10 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Paragraph from '../Paragraph'
 
-const ParagraphsList = ({
-  paragraphs = [],
+const Service = ({
+  onDownvoteClick,
   onUpvoteClick,
-  onDownvoteClick
+  paragraphs,
+  serviceId,
+  name
 }) => {
   if (paragraphs.length < 1) {
     return null
@@ -25,10 +27,17 @@ const ParagraphsList = ({
   )
 }
 
-ParagraphsList.propTypes = {
-  paragraphs: PropTypes.array,
+Service.propTypes = {
+  name: PropTypes.string.isRequired,
+  serviceId: PropTypes.string.isRequired,
+  paragraphs: PropTypes.arrayOf(PropTypes.shape({
+    downVotes: PropTypes.number.isRequired,
+    upVotes: PropTypes.number.isRequired,
+    body: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired
+  })).isRequired,
   onUpvoteClick: PropTypes.func.isRequired,
   onDownvoteClick: PropTypes.func.isRequired
 }
 
-export default ParagraphsList
+export default Service

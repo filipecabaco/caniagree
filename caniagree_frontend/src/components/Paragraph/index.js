@@ -4,13 +4,13 @@ import PropTypes from 'prop-types'
 const Paragraph = ({
   id,
   body,
-  upVotes = 0,
-  downVotes = 0,
+  upVotes,
+  downVotes,
   onUpvoteClick,
   onDownvoteClick
 }) => {
-  const upVoteHandler = () => onUpvoteClick(id)
-  const downVoteHandler = () => onDownvoteClick(id)
+  const upVoteHandler = () => onUpvoteClick({id})
+  const downVoteHandler = () => onDownvoteClick({id})
 
   return (
     <div>
@@ -26,10 +26,10 @@ const Paragraph = ({
 }
 
 Paragraph.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
-  downVotes: PropTypes.number,
-  upVotes: PropTypes.number,
+  upVotes: PropTypes.number.isRequired,
+  downVotes: PropTypes.number.isRequired,
   onUpvoteClick: PropTypes.func.isRequired,
   onDownvoteClick: PropTypes.func.isRequired
 }
