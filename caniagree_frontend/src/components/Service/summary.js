@@ -5,6 +5,7 @@ import ParagraphFilter from './paragraphFilter'
 
 const UP_THRESHOLD = 0.8
 const DOWN_THRESHOLD = 0.4
+const VOTES_THRESHOLD = 10
 
 const Summary = ({ 
   title, 
@@ -12,7 +13,7 @@ const Summary = ({
   totalDownvotes = 0,
   onParagraphToggleClick,
 }) => {
-  const warningLevel = getWarningLevel(totalUpvotes, totalDownvotes)
+  const warningLevel = getWarningLevel(0, 0)
 
   return (
     <section className="container-fluid terms-header">
@@ -46,17 +47,19 @@ const Votes = ({ totalUpvotes, totalDownvotes }) => {
   )
 }
 
-const SummaryMessage = ({ warning, error, ok }) => {
+const SummaryMessage = ({ warning, error, ok, neutral }) => {
   const alertClass = classnames('alert', 'alert-icon', {
     'alert-warning': warning,
     'alert-success': ok,
-    'alert-danger': error
+    'alert-danger': error,
+    'alert-info': neutral
   })
 
   const iconClass = classnames('icon', {
     'fa-warning': warning,
     'fa-check-circle': ok,
-    'fa-exclamation-circle': error
+    'fa-exclamation-circle': error,
+    'fa-info-circle': neutral
   })
 
   let messageTitle = ''
@@ -69,9 +72,12 @@ const SummaryMessage = ({ warning, error, ok }) => {
     messageTitle = "It's OK"
     text =
       'The terms of services are fair towards the user but they could be improved.'
-  } else {
+  } else if (error) {
     messageTitle = 'Watch out!'
     text = 'The terms of service raise very serious concerns.'
+  } else {
+    messageTitle = 'Not enough votes, yet...'
+    text = 'We still do not have enough data to know if it is safe to agree.'
   }
 
   return (
@@ -89,10 +95,20 @@ const getWarningLevel = (totalUpvotes, totalDownvotes) => {
   const totalVotes = totalUpvotes + totalDownvotes
   const upPercentage = totalUpvotes / totalVotes
 
+  if (totalVotes < VOTES_THRESHOLD) {
+    return {
+      neutral: true,
+      error: false,
+      ok: false,
+      warning: false
+    }  
+  }
+
   const error = upPercentage <= DOWN_THRESHOLD
   const ok = upPercentage >= UP_THRESHOLD
 
   return {
+    neutral: false,
     error,
     ok,
     warning: !error && !ok
