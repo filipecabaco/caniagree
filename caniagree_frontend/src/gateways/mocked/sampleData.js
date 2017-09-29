@@ -11,18 +11,18 @@ const paragraphs = {
     paragraphs: [{
       id: '1',
       body: 'first paragraph',
-      upVotes: 0,
-      downVotes: 0
+      up_vote: 0,
+      down_vote: 0
     }, {
       id: '2',
       body: 'something really strange',
-      upVotes: 0,
-      downVotes: 5
+      up_vote: 0,
+      down_vote: 5
     }, {
       id: '3',
       body: 'this part is really cool man',
-      upVotes: 10,
-      downVotes: 0
+      up_vote: 10,
+      down_vote: 0
     }]
   },
   '2': {
@@ -30,18 +30,18 @@ const paragraphs = {
     paragraphs: [{
       id: '1',
       body: 'random === 4',
-      upVotes: 0,
-      downVotes: 0
+      up_vote: 0,
+      down_vote: 0
     }, {
       id: '2',
       body: 'Math.random() === 10 * Math.random()',
-      upVotes: 0,
-      downVotes: 5
+      up_vote: 0,
+      down_vote: 5
     }, {
       id: '3',
       body: 'Math.random() !== Math.random() (some times)',
-      upVotes: 10,
-      downVotes: 0
+      up_vote: 10,
+      down_vote: 0
     }]
   },
   '3': {
@@ -49,18 +49,18 @@ const paragraphs = {
     paragraphs: [{
       id: '1',
       body: 'saw',
-      upVotes: 0,
-      downVotes: 0
+      up_vote: 0,
+      down_vote: 0
     }, {
       id: '2',
       body: 'blind',
-      upVotes: 0,
-      downVotes: 5
+      up_vote: 0,
+      down_vote: 5
     }, {
       id: '3',
       body: 'seen',
-      upVotes: 10,
-      downVotes: 0
+      up_vote: 10,
+      down_vote: 0
     }]
   },
   '4': {
@@ -68,18 +68,18 @@ const paragraphs = {
     paragraphs: [{
       id: '1',
       body: 'did\'t do nothing yet',
-      upVotes: 0,
-      downVotes: 0
+      up_vote: 0,
+      down_vote: 0
     }, {
       id: '2',
       body: 'red alert in every test',
-      upVotes: 0,
-      downVotes: 5
+      up_vote: 0,
+      down_vote: 5
     }, {
       id: '3',
       body: 'we are doing TDD, everything is ok and safe :)',
-      upVotes: 10,
-      downVotes: 0
+      up_vote: 10,
+      down_vote: 0
     }]
   }
 }
