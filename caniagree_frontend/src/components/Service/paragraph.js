@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Button, Row, Col } from 'reactstrap'
 
 const Paragraph = ({
   id,
@@ -9,19 +10,23 @@ const Paragraph = ({
   onUpvoteClick,
   onDownvoteClick
 }) => {
-  const upVoteHandler = () => onUpvoteClick({id})
-  const downVoteHandler = () => onDownvoteClick({id})
+  const upVoteHandler = () => onUpvoteClick({ id })
+  const downVoteHandler = () => onDownvoteClick({ id })
 
   return (
-    <div>
-      <div>---------------------</div>
-      <div>{body}</div>
-      <div>up_vote: {up_vote}</div>
-      <div>down_vote: {down_vote}</div>
-      <button onClick={upVoteHandler}>UP</button>
-      <button onClick={downVoteHandler}>DOWN</button>
-      <div>---------------------</div>
-    </div>
+    <Row className="mb-4">
+      <Col lg="8">
+        <p>{body}</p>
+      </Col>
+      <Col lg="4">
+        <p>Upvotes: {up_vote}</p>
+        <p>Downvotes: {down_vote}</p>
+        <Button className="mr-2" onClick={upVoteHandler}>
+          +
+        </Button>
+        <Button onClick={downVoteHandler}>-</Button>
+      </Col>
+    </Row>
   )
 }
 
