@@ -1,6 +1,8 @@
 import * as actionTypes from '../constants/action.types'
 import actionCreator from './action.creator'
 
+export const setRoute = actionCreator(actionTypes.SET_ROUTE)
+
 export const upvoteParagraph = actionCreator(actionTypes.UPVOTE_PARAGRAPH)
 export const downvoteParagraph = actionCreator(actionTypes.DOWNVOTE_PARAGRAPH)
 
