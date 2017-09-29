@@ -14,7 +14,7 @@
   "license": "MIT",
   "scripts": {
     "prebuild": "yarn clean",
-    "build": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.dev.babel.js --color -p",
+    "build": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.prod.babel.js --color -p",
     "start": "yarn start:dev",
     "start:dev": "cross-env NODE_ENV=development APP=caniagree node server",
     "clean": "rimraf ./build/*",
