@@ -38,6 +38,8 @@ defmodule CaniagreeWeb.Endpoint do
     key: "_caniagree_key",
     signing_salt: "MizDngTA"
 
+  plug Corsica, origins: "*"
+
   plug CaniagreeWeb.Router
 
   @doc """
