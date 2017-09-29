@@ -5,19 +5,26 @@ import ServiceLink from '../../containers/App/service.link'
 const Results = ({services, term}) => {
   if (term && !services.length) {
     return (
-      <div>No results found</div>
+      <div className="container intro">
+        <div className="row">
+          <div className="col-sm-4"><h2>No results found!</h2></div>
+        </div>
+      </div>
     )
   }
 
   return (
-    <div>{
-      services.map((service) => (
-        <ServiceLink
-          key={service.id}
-          {...service}
-        />
-      ))
-    }</div>
+    <div className="container intro">
+      <div className="row">
+      {
+        services.map((service) => (
+          <ServiceLink
+            key={service.id}
+            {...service}
+          />
+        ))
+      }</div>
+    </div>
   )
 }
 

@@ -9,10 +9,8 @@ class ServiceLink extends React.Component {
     const {self, name, id} = this.props
 
     return (
-      <div onClick={this.onClick}>
-        <span>{self}</span>
-        <span>{name}</span>
-        <span>{id}</span>
+      <div className="col-sm-4" onClick={this.onClick}>
+        <h2>{name}</h2>
       </div>
     )
   }
