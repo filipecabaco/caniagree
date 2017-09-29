@@ -1,32 +1,31 @@
 import React from 'react'
 import Search from '../../containers/App/search'
 import Results from '../../containers/App/results'
-import { Container, Row, Col } from 'reactstrap'
+import logo from '../../../../markup/assets/imgs/logo-small.svg'
 
-const App = () => (
-  <Container>
-    <Row className="justify-content-center">
-      <Col lg="6">
-        <Row className="mb-2">
-          <Col>
-            <h1>Can I Agree?</h1>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col>
-            <Search />
-          </Col>
-        </Row>
-
-        <Row>
-          <Col>
-            <Results />
-          </Col>
-        </Row>
-      </Col>
-    </Row>
-  </Container>
-)
+const App = () => {
+  return (
+    <div className="home">
+      <div className="container-fluid search-form">
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-3" />
+            <div className="col-sm-6">
+              <h1>
+                <img src={logo} alt="Can I Agree?" height="45px" />
+              </h1>
+              <form>
+                <div className="form-group">
+                  <Search />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Results />
+    </div>
+  )
+}
 
 export default App

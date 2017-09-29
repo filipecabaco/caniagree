@@ -24,16 +24,12 @@ class Search extends React.Component {
 
     return (
       <Form onSubmit={this.onSubmit} >
-        <FormGroup>
-          <Input
-            type='text'
-            name='query'
-            placeholder='search for a service. e.g.: Amazon, Facebook'
-            autoComplete='off'
-            value={value}
-            onChange={this.onChange}
-          />
-        </FormGroup>
+        <div className="form-group">
+          <div className="input-search">
+            <button type="submit" className="input-search-btn"><i className="icon fa-search" aria-hidden="true"></i></button>
+            <input type="text" className="form-control" autofocus="true" placeholder="Search for a service. e.g.: Amazon, Facebook..." onChange={this.onChange} value={value} />
+          </div>
+        </div>
       </Form>
     )
   }
