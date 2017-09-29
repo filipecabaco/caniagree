@@ -18,6 +18,7 @@ defmodule CaniagreeWeb.Router do
 
     resources "/services", ServiceController, except: [:new, :edit]
     get "/services/:id/paragraphs", ServiceController, :paragraphs
+    post "/services/submit", ServiceController, :submit
 
     resources "/paragraphs", ParagraphController, except: [:new, :edit]
     post "/paragraphs/:id/down", ParagraphController, :downvote
