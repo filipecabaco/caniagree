@@ -3,12 +3,14 @@ import PropTypes from 'prop-types'
 import { Form, FormGroup, Input } from 'reactstrap'
 
 class Search extends React.Component {
-  state = { value: this.props.term }
+  state = {
+    value: this.props.term
+  }
 
-  onSubmit = e => {
-    e.preventDefault()
+  onChange = e => {
+    const { value } = e.target
 
-    const { value } = this.state
+    this.setState({ value })
 
     if (value) {
       this.props.filterServices({term: value})
@@ -17,19 +19,18 @@ class Search extends React.Component {
     }
   }
 
-  onChange = e => {
-    this.setState({ value: e.target.value })
-  }
-
   render() {
+    const {value, focus} = this.state
+
     return (
-      <Form onSubmit={this.onSubmit}>
+      <Form onSubmit={this.onSubmit} >
         <FormGroup>
           <Input
-            type="text"
-            name="query"
-            placeholder="search for a service. e.g.: Amazon, Facebook"
-            value={this.state.value}
+            type='text'
+            name='query'
+            placeholder='search for a service. e.g.: Amazon, Facebook'
+            autoComplete='off'
+            value={value}
             onChange={this.onChange}
           />
         </FormGroup>
