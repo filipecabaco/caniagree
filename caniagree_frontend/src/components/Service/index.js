@@ -20,6 +20,8 @@ const Service = ({
         <Paragraph
           key={index}
           {...paragraph}
+          up_vote={paragraph.up_vote}
+          down_vote={paragraph.down_vote}
           onUpvoteClick={onUpvoteClick}
           onDownvoteClick={onDownvoteClick}
         />
