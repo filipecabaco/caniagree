@@ -8,7 +8,13 @@ defmodule CaniagreeWeb.ServiceController do
 
   def index(conn, _params) do
     services = Services.list_services()
-    render(conn, "index.json", services: services)
+    sorted = Enum.map(services, fn service ->
+      paragraphs = Map.get(service, :paragraphs)
+      sorted_paragraphs = Enum.reverse(paragraphs)
+      Map.replace(service, :paragraphs, sorted_paragraphs)
+    end)
+
+    render(conn, "index.json", services: sorted)
   end
 
   def create(conn, %{"service" => service_params}) do
@@ -47,6 +53,7 @@ defmodule CaniagreeWeb.ServiceController do
     |> Enum.map(&Services.get_paragraph!/1)
     |> Enum.map(&Map.from_struct/1)
     |> Enum.map(&(Map.delete(&1, :__meta__)))
+    |> Enum.reverse
 
     json conn, %{name: name, paragraphs: resolved}
   end
