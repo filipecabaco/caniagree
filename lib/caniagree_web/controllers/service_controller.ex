@@ -54,18 +54,27 @@ defmodule CaniagreeWeb.ServiceController do
   def submit(conn, %{"domain" => domain, "name" => name, "url" => url}) do
     # %{"domain" => domain, "name" => name, "url" => url} = Poison.decode!(body)
     text_list = Caniagree.Parser.parse(url)
-    save_texts(text_list)
-    Caniagree.Services.create_service
+    id_list = save_texts_and_get_ids(text_list, [])
+    Caniagree.Services.create_service(
+      %{domain: domain,
+        name: name,
+        paragraphs: id_list})
 
     conn
     |> put_status(201)
     |> send_resp
   end
 
-  defp save_texts(text_list) do
-    for text <- text_list do
-      Caniagree.Services.create_paragraph(
+  defp save_texts_and_get_ids([], result), do: result
+  defp save_texts_and_get_ids([text | rest], result) do
+    id = insert_text(text)
+    save_texts_and_get_ids(rest, [id | result])
+  end
+
+  defp insert_text(text) do
+      {:ok, %{id: id}} = Caniagree.Services.create_paragraph(
         %{body: text, up_vote: 0, down_vote: 0})
-    end
+
+      id
   end
 end
