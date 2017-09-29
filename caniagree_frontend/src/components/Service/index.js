@@ -31,8 +31,8 @@ Service.propTypes = {
   name: PropTypes.string.isRequired,
   serviceId: PropTypes.string.isRequired,
   paragraphs: PropTypes.arrayOf(PropTypes.shape({
-    downVotes: PropTypes.number.isRequired,
-    upVotes: PropTypes.number.isRequired,
+    down_vote: PropTypes.number.isRequired,
+    up_vote: PropTypes.number.isRequired,
     body: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired
   })).isRequired,
