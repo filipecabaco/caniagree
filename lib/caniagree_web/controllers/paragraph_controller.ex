@@ -39,4 +39,18 @@ defmodule CaniagreeWeb.ParagraphController do
       send_resp(conn, :no_content, "")
     end
   end
+
+  def upvote(conn, %{"id" => id}) do
+    paragraph = Services.get_paragraph!(id)
+    %{up_vote: up} = paragraph
+    Services.update_paragraph(paragraph, %{up_vote: up + 1})
+    send_resp(conn, :no_content, "")
+  end
+
+  def downvote(conn, %{"id" => id}) do
+    paragraph = Services.get_paragraph!(id)
+    %{down_vote: down} = paragraph
+    Services.update_paragraph(paragraph, %{down_vote: down + 1})
+    send_resp(conn, :no_content, "")
+  end
 end

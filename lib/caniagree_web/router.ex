@@ -15,7 +15,10 @@ defmodule CaniagreeWeb.Router do
 
   scope "/", CaniagreeWeb do
     pipe_through :api
+
     resources "/services", ServiceController, except: [:new, :edit]
     resources "/paragraphs", ParagraphController, except: [:new, :edit]
+    post "/paragraphs/:id/down", ParagraphController, :downvote
+    post "/paragraphs/:id/up", ParagraphController, :upvote
   end
 end
