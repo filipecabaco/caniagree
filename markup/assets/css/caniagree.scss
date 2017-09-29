@@ -5,8 +5,36 @@ $grey-bg: #f1f4f5;
 $border-color: #ddd;
 
 .home {
-  background-color: #926DDE;
-  color:#fff;
+
+  .search-form {
+    background-color: $grey-bg;
+    padding-top:100px;
+    padding-bottom: 100px;
+    text-align: center;
+    border-bottom:1px solid $border-color;
+    margin-bottom:2rem;
+
+    .form-group {
+      margin-top:20px;
+    }
+  }
+
+  .intro {
+    text-align: center;
+
+    h2 {
+      font-size: 2rem;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .home {
+    .search-form {
+      padding-top:50px;
+      padding-bottom: 50px;
+    }
+  }
 }
 
 header {
