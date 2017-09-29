@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ServiceLink from './service.link'
+import ServiceLink from '../../containers/App/service.link'
 
-const Results = ({services, term, onServiceClicked}) => {
+const Results = ({services, term}) => {
   if (term && !services.length) {
     return (
       <div>No results found</div>
@@ -14,7 +14,6 @@ const Results = ({services, term, onServiceClicked}) => {
       services.map((service) => (
         <ServiceLink
           key={service.id}
-          onClick={onServiceClicked}
           {...service}
         />
       ))

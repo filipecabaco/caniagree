@@ -1,10 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Search from '../../containers/App/search'
-import Results from './results'
+import Results from '../../containers/App/results'
 import { Container, Row, Col } from 'reactstrap'
 
-const App = ({ services, term, onServiceClicked }) => (
+const App = () => (
   <Container>
     <Row className='justify-content-center'>
       <Col lg='6'>
@@ -16,30 +15,18 @@ const App = ({ services, term, onServiceClicked }) => (
 
         <Row>
           <Col>
-            <Search term={term} />
+            <Search />
           </Col>
         </Row>
 
         <Row>
           <Col>
-            <Results term={term} services={services} onServiceClicked={onServiceClicked} />
+            <Results />
           </Col>
         </Row>
       </Col>
     </Row>
   </Container>
 )
-
-App.propTypes = {
-  onServiceClicked: PropTypes.func.isRequired,
-  term: PropTypes.string.isRequired,
-  services: PropTypes.arrayOf(
-    PropTypes.shape({
-      self: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired
-    })
-  ).isRequired
-}
 
 export default App
