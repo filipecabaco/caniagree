@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Summary from './summary'
+import Header from './header'
 import ParagraphsList from './paragraphs.list'
 
 const Service = ({
@@ -10,19 +11,19 @@ const Service = ({
   serviceId,
   name
 }) => {
-  const {
-    totalUpvotes,
-    totalDownvotes
-  } = paragraphs.reduce((totals, paragraph) => {
-    totals.totalUpvotes += paragraph.up_vote
-    totals.totalDownvotes += paragraph.down_vote
+  const { totalUpvotes, totalDownvotes } = paragraphs.reduce(
+    (totals, paragraph) => {
+      totals.totalUpvotes += paragraph.up_vote
+      totals.totalDownvotes += paragraph.down_vote
 
-    return totals
-  }, {totalUpvotes: 0, totalDownvotes: 0})
+      return totals
+    },
+    { totalUpvotes: 0, totalDownvotes: 0 }
+  )
 
   return (
-    <div className='results'>
-      <header></header>
+    <div className="results">
+      <Header />
 
       <Summary
         title={name}
