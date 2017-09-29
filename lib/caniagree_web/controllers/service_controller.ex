@@ -41,14 +41,14 @@ defmodule CaniagreeWeb.ServiceController do
   end
 
   def paragraphs(conn, %{"id" => id}) do
-    %{paragraphs: paragraphs} = Services.get_service!(id)
+    %{paragraphs: paragraphs, name: name} = Services.get_service!(id)
 
     resolved = paragraphs
     |> Enum.map(&Services.get_paragraph!/1)
     |> Enum.map(&Map.from_struct/1)
     |> Enum.map(&(Map.delete(&1, :__meta__)))
 
-    json conn, resolved
+    json conn, %{name: name, paragraphs: resolved}
   end
 
   def submit(conn, %{"domain" => domain, "name" => name, "url" => url}) do
