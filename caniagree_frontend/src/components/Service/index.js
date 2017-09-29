@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Summary from './summary'
-import Header from './header'
+import Header from '../../containers/header'
 import ParagraphsList from './paragraphs.list'
 
 const Service = ({
@@ -51,7 +51,7 @@ Service.propTypes = {
       down_vote: PropTypes.number.isRequired,
       up_vote: PropTypes.number.isRequired,
       body: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired
+      id: PropTypes.number.isRequired
     })
   ).isRequired,
   onUpvoteClick: PropTypes.func.isRequired,

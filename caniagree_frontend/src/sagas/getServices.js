@@ -1,10 +1,10 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { GET_SERVICES } from '../constants/action.types'
 import { setServices } from '../actions'
-import { sampleDataGateway } from '../gateways/mocked/sampleData'
+import {getServices} from '../gateways/services'
 
-export function* getServicesSaga (action, gateway = sampleDataGateway) {
-  const { services } = yield call(gateway)
+export function* getServicesSaga (action) {
+  const { services } = yield call(getServices)
 
   yield put(setServices({services}))
 }

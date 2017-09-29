@@ -14,7 +14,7 @@ export function* filterServicesSaga ({
   console.log('what?', force, term)
 
   if (force && services.length === 1) {
-    yield put(setRoute({path: services[0].self}))
+    yield put(setRoute({path: 'service/' + services[0].id}))
   } else {
     yield put(setRoute({path: `/?q=${term}`}))
   }

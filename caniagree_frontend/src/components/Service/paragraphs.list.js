@@ -39,7 +39,7 @@ Service.propTypes = {
       down_vote: PropTypes.number.isRequired,
       up_vote: PropTypes.number.isRequired,
       body: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired
+      id: PropTypes.number.isRequired
     })
   ).isRequired,
   onUpvoteClick: PropTypes.func.isRequired,
