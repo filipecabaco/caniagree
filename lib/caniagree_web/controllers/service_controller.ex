@@ -61,8 +61,7 @@ defmodule CaniagreeWeb.ServiceController do
         paragraphs: id_list})
 
     conn
-    |> put_status(201)
-    |> send_resp
+    |> resp(201, "")
   end
 
   defp save_texts_and_get_ids([], result), do: result
