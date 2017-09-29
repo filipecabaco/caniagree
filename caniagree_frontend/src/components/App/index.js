@@ -1,13 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Search from '../../containers/search'
+import Search from '../../containers/App/search'
+import Results from './results'
 import { Container, Row, Col } from 'reactstrap'
 
-const App = ({ services }) => (
+const App = ({ services, term, onServiceClicked }) => (
   <Container>
-    <Row className="justify-content-center">
-      <Col lg="6">
-        <Row className="mb-2">
+    <Row className='justify-content-center'>
+      <Col lg='6'>
+        <Row className='mb-2'>
           <Col>
             <h1>Can I Agree?</h1>
           </Col>
@@ -15,19 +16,13 @@ const App = ({ services }) => (
 
         <Row>
           <Col>
-            <Search />
+            <Search term={term} />
           </Col>
         </Row>
 
         <Row>
           <Col>
-            {services.map(({ self, name, id }) => (
-              <div key={id}>
-                <span>{self}</span>
-                <span>{name}</span>
-                <span>{id}</span>
-              </div>
-            ))}
+            <Results term={term} services={services} onServiceClicked={onServiceClicked} />
           </Col>
         </Row>
       </Col>
@@ -36,6 +31,8 @@ const App = ({ services }) => (
 )
 
 App.propTypes = {
+  onServiceClicked: PropTypes.func.isRequired,
+  term: PropTypes.string.isRequired,
   services: PropTypes.arrayOf(
     PropTypes.shape({
       self: PropTypes.string.isRequired,

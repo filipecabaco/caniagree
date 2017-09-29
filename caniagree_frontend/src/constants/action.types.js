@@ -1,3 +1,5 @@
+export const SET_ROUTE = 'SET_ROUTE'
+
 export const GET_SERVICES = 'GET_SERVICES'
 export const GET_PARAGRAPHS = 'GET_PARAGRAPHS'
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Form, FormGroup, Input } from 'reactstrap'
 
 class Search extends React.Component {
-  state = { value: '' }
+  state = { value: this.props.term }
 
   onSubmit = e => {
     e.preventDefault()
@@ -11,7 +11,7 @@ class Search extends React.Component {
     const { value } = this.state
 
     if (value) {
-      this.props.filterServices({ term: value })
+      this.props.filterServices({term: value})
     } else {
       this.props.clearFilter()
     }
@@ -40,7 +40,8 @@ class Search extends React.Component {
 
 Search.propTypes = {
   filterServices: PropTypes.func.isRequired,
-  clearFilter: PropTypes.func.isRequired
+  clearFilter: PropTypes.func.isRequired,
+  term: PropTypes.string.isRequired
 }
 
 export default Search

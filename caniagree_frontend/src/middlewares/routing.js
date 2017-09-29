@@ -4,17 +4,10 @@ import * as actionTypes from '../constants/action.types'
 export default store => next => action => {
   next(action)
 
-  const {type, payload = {}} = action
-  const {term = ''} = payload
+  const {type, payload: {path = ''} = {}} = action
 
   switch (type) {
-    case actionTypes.FILTER_SERVICES:
-      const {services} = store.getState()
-
-      const filteredServices = services.filter(({name}) => name.includes(term))
-
-      if (filteredServices.length === 1) {
-        store.dispatch(routerActions.push(filteredServices[0].self))
-      }
+    case actionTypes.SET_ROUTE:
+      store.dispatch(routerActions.push(path))
   }
 }
