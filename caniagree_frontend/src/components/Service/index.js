@@ -7,7 +7,9 @@ import ParagraphsList from './paragraphs.list'
 const Service = ({
   onDownvoteClick,
   onUpvoteClick,
+  onParagraphToggleClick,
   paragraphs,
+  filteredParagraphs,
   serviceId,
   name
 }) => {
@@ -29,12 +31,13 @@ const Service = ({
         title={name}
         totalUpvotes={totalUpvotes}
         totalDownvotes={totalDownvotes}
+        onParagraphToggleClick={onParagraphToggleClick}
       />
 
       <ParagraphsList
         onDownvoteClick={onDownvoteClick}
         onUpvoteClick={onUpvoteClick}
-        paragraphs={paragraphs}
+        paragraphs={filteredParagraphs}
       />
     </div>
   )
@@ -52,7 +55,8 @@ Service.propTypes = {
     })
   ).isRequired,
   onUpvoteClick: PropTypes.func.isRequired,
-  onDownvoteClick: PropTypes.func.isRequired
+  onDownvoteClick: PropTypes.func.isRequired,
+  onParagraphToggleClick: PropTypes.func.isRequired
 }
 
 export default Service

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { upvoteParagraph, downvoteParagraph } from '../actions'
+import { upvoteParagraph, downvoteParagraph, toggleParagraphs } from '../actions'
 import Service from '../components/Service'
 
 export const mapStateToProps = ({ service }) => service
@@ -9,7 +9,8 @@ export const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       onUpvoteClick: upvoteParagraph,
-      onDownvoteClick: downvoteParagraph
+      onDownvoteClick: downvoteParagraph,
+      onParagraphToggleClick: toggleParagraphs
     },
     dispatch
   )
