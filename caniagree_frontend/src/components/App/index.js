@@ -5,9 +5,9 @@ import { Container, Row, Col } from 'reactstrap'
 
 const App = () => (
   <Container>
-    <Row className='justify-content-center'>
-      <Col lg='6'>
-        <Row className='mb-2'>
+    <Row className="justify-content-center">
+      <Col lg="6">
+        <Row className="mb-2">
           <Col>
             <h1>Can I Agree?</h1>
           </Col>
