@@ -4,7 +4,7 @@ import Results from '../../components/App/results'
 export const mapStateToProps = ({ filterServices, services }) => ({
   term: filterServices,
   services: filterServices
-    ? services.filter(({name}) => name.includes(filterServices))
+    ? services.filter(({name}) => name.toLowerCase().includes(filterServices.toLowerCase()))
     : []
 })
 

@@ -7,7 +7,19 @@ class Search extends React.Component {
     value: this.props.term
   }
 
-  onChange = e => {
+  onSubmit = (e) => {
+    e.preventDefault()
+
+    const { value } = this.state
+
+    if (value) {
+      this.props.filterServices({term: value, force: true})
+    } else {
+      this.props.clearFilter()
+    }
+  }
+
+  onChange = (e) => {
     const { value } = e.target
 
     this.setState({ value })
@@ -27,7 +39,7 @@ class Search extends React.Component {
         <div className="form-group">
           <div className="input-search">
             <button type="submit" className="input-search-btn"><i className="icon fa-search" aria-hidden="true"></i></button>
-            <input type="text" className="form-control" autofocus="true" placeholder="Search for a service. e.g.: Amazon, Facebook..." onChange={this.onChange} value={value} />
+            <input type="text" className="form-control" autoFocus="true" placeholder="Search for a service. e.g.: Amazon, Facebook..." onChange={this.onChange} value={value} />
           </div>
         </div>
       </Form>
