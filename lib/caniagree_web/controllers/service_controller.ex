@@ -53,7 +53,10 @@ defmodule CaniagreeWeb.ServiceController do
 
   def submit(conn, %{"domain" => domain, "name" => name, "url" => url}) do
     # %{"domain" => domain, "name" => name, "url" => url} = Poison.decode!(body)
-    text_list = Caniagree.Parser.parse(url)
+    html = Caniagree.Parser.fetch(url)
+    break_lined = Caniagree.Parser.parse(html, "\n")
+    spaced = Caniagree.Parser.parse(html)
+    text_list = if length(break_lined) > length(spaced) do break_lined else spaced end
     id_list = save_texts_and_get_ids(text_list, [])
     Caniagree.Services.create_service(
       %{domain: domain,
@@ -66,13 +69,9 @@ defmodule CaniagreeWeb.ServiceController do
 
   defp save_texts_and_get_ids([], result), do: result
   defp save_texts_and_get_ids([text | rest], result) do
-    if(text != "") do
-      id = insert_text(text)
-      new_result = result ++ [id]
-      save_texts_and_get_ids(rest, new_result)
-    else
-      nil
-    end
+    id = insert_text(text)
+    new_result = result ++ [id]
+    save_texts_and_get_ids(rest, new_result)
   end
 
   defp insert_text(text) do
