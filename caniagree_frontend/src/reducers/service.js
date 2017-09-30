@@ -1,4 +1,5 @@
 import * as actionTypes from '../constants/action.types'
+import { getControversialParagraphs } from '../util/paragraph.utils'
 
 const initialState = {
   paragraphs: [],
@@ -20,7 +21,7 @@ export default (state = initialState, {type, payload: {isToggled, paragraphs, se
       }
     case actionTypes.TOGGLE_PARAGRAPH:
       const filtered = isToggled
-        ? state.paragraphs.filter((p) => p.down_vote > MIN_DOWN_VOTES)
+        ? getControversialParagraphs(state.paragraphs)
         : state.paragraphs
 
       return {
