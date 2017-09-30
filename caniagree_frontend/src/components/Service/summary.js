@@ -8,7 +8,9 @@ const Summary = ({
   title,
   totalUpvotes = 0,
   totalDownvotes = 0,
-  onParagraphToggleClick,
+  totalParagraphs = 0,
+  totalFilteredParagraphs = 0,
+  onParagraphToggleClick
 }) => {
   const warningLevel = getWarningLevel(totalUpvotes, totalDownvotes)
 
@@ -19,7 +21,9 @@ const Summary = ({
         <div className="row">
           <SummaryMessage {...warningLevel} />
           <Votes totalUpvotes={totalUpvotes} totalDownvotes={totalDownvotes} />
-          <ParagraphFilter onToggleClick={onParagraphToggleClick} />
+          <ParagraphFilter onToggleClick={onParagraphToggleClick} 
+            totalParagraphs={totalParagraphs}
+            totalFilteredParagraphs={totalFilteredParagraphs}/>
         </div>
       </section>
     </section>
@@ -116,6 +120,8 @@ Summary.propTypes = {
   title: PropTypes.string.isRequired,
   totalUpvotes: PropTypes.number.isRequired,
   totalDownvotes: PropTypes.number.isRequired,
+  totalParagraphs: PropTypes.number.isRequired,
+  totalFilteredParagraphs: PropTypes.number.isRequired,
   onParagraphToggleClick: PropTypes.func.isRequired
 }
 
