@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { UP_THRESHOLD, DOWN_THRESHOLD, VOTES_THRESHOLD } from '../../constants/thresholds'
 
 const Paragraph = ({
   id,
@@ -19,14 +20,14 @@ const Paragraph = ({
     <div className='row'>
       <div className='col-sm-8 text'>
         {
-          totalVotes >= 10
-            ? ratio >= 0.8
+          totalVotes >= VOTES_THRESHOLD
+            ? ratio >= UP_THRESHOLD
               ? (
                 <div className='alert alert-alt alert-success' role='alert'>
                   <p>{body}</p>
                 </div>
               )
-              : ratio <= 0.4
+              : ratio <= DOWN_THRESHOLD
                 ? (
                   <div className='alert alert-alt alert-danger' role='alert'>
                     <p>{body}</p>
