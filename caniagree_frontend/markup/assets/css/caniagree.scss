@@ -21,6 +21,35 @@ h1, h2, h3, h4, .terms-header, .info {
 
   .form-group {
     margin-top:20px;
+    position: relative;
+
+    .results {
+      position: absolute;
+      background: #fff;
+      border: 1px solid #ddd;
+      margin: 0 .5rem;
+
+      border-radius: 2px;
+      top: 103%;
+      width: 98%;
+
+      ul {
+        margin:0;
+
+        a {
+          color:#666;
+          display: block;
+          padding: .5rem 1rem;
+
+
+          &:hover, &:focus {
+            text-decoration: none;
+            background:#fafafa;
+
+          }
+        }
+      }
+    }
   }
 }
 
