@@ -20,9 +20,9 @@ const Summary = ({
         <div className="row">
           <SummaryMessage {...warningLevel} />
           <Votes totalUpvotes={totalUpvotes} totalDownvotes={totalDownvotes} />
-          <ParagraphFilter onToggleClick={onParagraphToggleClick}
-            totalFilteredParagraphs={totalFilteredParagraphs}/>
         </div>
+        <ParagraphFilter onToggleClick={onParagraphToggleClick}
+          totalFilteredParagraphs={totalFilteredParagraphs}/>
       </section>
     </section>
   )
