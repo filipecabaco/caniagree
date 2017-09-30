@@ -1,7 +1,20 @@
 # caniagree - WIP
 Can I Agree?
 
-PixelsCamp 2017 Project
+
+We allow people who do read Terms & Conditions to vote (or comment) on the safety of each paragraph.
+
+We can then collapse the safe parts and highlight the unsafe ones.
+
+Think of a web where Terms & Conditions actually have meaning.
+
+Think of a web where companies know which paragraphs of their Terms & Conditions actually make their users angry.
+
+Think of comparing the red flags of several similar services.
+
+That's what we're aiming for! A safer internet experience for all of us!
+
+This is a PixelsCamp 2017 Project - https://pixels.camp/projects/6
 
 
 # launch plan
