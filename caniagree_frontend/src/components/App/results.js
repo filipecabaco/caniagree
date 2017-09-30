@@ -14,8 +14,8 @@ const Results = ({services, term}) => {
   }
 
   return (
-    <div className="container intro">
-      <div className="row">
+    <div className="results text-left">
+      <ul className="list-unstyled">
       {
         services.map((service) => (
           <ServiceLink
@@ -23,7 +23,7 @@ const Results = ({services, term}) => {
             {...service}
           />
         ))
-      }</div>
+      }</ul>
     </div>
   )
 }
