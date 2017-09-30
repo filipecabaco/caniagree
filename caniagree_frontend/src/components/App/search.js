@@ -33,11 +33,13 @@ class Search extends React.Component {
   }
 
   render() {
-    const {value, focus} = this.state
+    const {value} = this.state
+
+    const formClass = 'form-group' + (value && !this.props.services.length ? ' has-error' : '')
 
     return (
       <Form onSubmit={this.onSubmit} >
-        <div className="form-group">
+        <div className={formClass}>
           <div className="input-search">
             <button type="submit" className="input-search-btn"><i className="icon fa-search" aria-hidden="true"></i></button>
             <input type="text" className="form-control" autoFocus="true" placeholder="Search for a service. e.g.: Amazon, Facebook..." onChange={this.onChange} value={value} />
@@ -52,6 +54,7 @@ class Search extends React.Component {
 Search.propTypes = {
   filterServices: PropTypes.func.isRequired,
   clearFilter: PropTypes.func.isRequired,
+  services: PropTypes.array.isRequired,
   term: PropTypes.string.isRequired
 }
 

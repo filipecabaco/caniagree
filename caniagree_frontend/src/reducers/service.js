@@ -30,12 +30,10 @@ export default (
       const originalFiltered = getControversialParagraphs(paragraphs)
       return {
         paragraphs: [...paragraphs],
-        filteredParagraphs: originalFiltered,
+        filteredParagraphs: [...paragraphs],
         serviceId,
         name,
-        totalFilteredParagraphs: isToggled
-          ? paragraphs.length
-          : originalFiltered.length
+        totalFilteredParagraphs: originalFiltered.length
       }
     case actionTypes.TOGGLE_PARAGRAPH:
       const stateparagraphs = state.paragraphs
