@@ -11,8 +11,6 @@ export function* filterServicesSaga ({
   const services = yield select(({services}) =>
     services.filter(({name}) => name.toLowerCase().includes(term.toLowerCase())))
 
-  console.log('what?', force, term)
-
   if (force && services.length === 1) {
     yield put(setRoute({path: 'service/' + services[0].id}))
   } else {
