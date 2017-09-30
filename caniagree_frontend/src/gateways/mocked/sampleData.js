@@ -9,7 +9,7 @@ const services = [
 let paragraphId = 0
 let _ = false
 
-const nextParagraphId = () => '' + paragraphId++
+const nextParagraphId = () => paragraphId++
 const randomVotes = () => {
   const mul = _ ? 1000 : 600
 
