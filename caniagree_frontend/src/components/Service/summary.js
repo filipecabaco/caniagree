@@ -2,10 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import ParagraphFilter from './paragraphFilter'
-
-const UP_THRESHOLD = 0.8
-const DOWN_THRESHOLD = 0.4
-const VOTES_THRESHOLD = 10
+import { UP_THRESHOLD, DOWN_THRESHOLD, VOTES_THRESHOLD } from '../../constants/thresholds'
 
 const Summary = ({
   title,
