@@ -1,4 +1,4 @@
-export const baseUrl = 'https://caniagree.herokuapp.com/'
+export const baseUrl = 'https://caniagree-api.herokuapp.com/'
 
 export const getServicesPath = 'services'
 export const getServicePath = (id) => `services/${id}`
