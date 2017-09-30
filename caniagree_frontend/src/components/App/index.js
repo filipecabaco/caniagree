@@ -19,6 +19,10 @@ const App = () => {
                 <ul className="list-inline small">
                   <li>Quick links:</li>
                   <li><a href="/service/6">Facebook</a></li>
+                  <li><a href="/service/8">Slack</a></li>
+                  <li><a href="/service/9">Dropbox</a></li>
+                  <li><a href="/service/12">PayPal</a></li>
+                  <li><a href="/service/14">AirBnB</a></li>
                 </ul>
               </div>
             </div>
@@ -35,7 +39,7 @@ const App = () => {
             <p>Some Terms &amp; Conditions have more words than some books.</p>
           </div>
           <div className="col-sm-4">
-            <h2><i className="icon fa-cogs" aria-hidden="true"></i>How it works?</h2>
+            <h2><i className="icon fa-cogs" aria-hidden="true"></i>How does it work?</h2>
             <p>We allow people who <strong>do read</strong> Terms &amp; Conditions to vote on the safety of each paragraph.</p>
             <p>We can then show you the safe parts and highlight the unsafe ones, so that you are aware of what you're agreeing with. </p>
           </div>
