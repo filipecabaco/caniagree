@@ -13,8 +13,12 @@ const createRoutes = (store) => (
 
           const {q} = qs.parse(search.replace(/^\?/, ''))
 
-          if (q && q !== filterServices) {
-            store.dispatch(actions.filterServices({term: q}))
+          if (q !== filterServices) {
+            if (q) {
+              store.dispatch(actions.filterServices({term: q}))
+            } else {
+              store.dispatch(actions.clearFilter())
+            }
           }
         }
       } />

@@ -3,19 +3,13 @@ import PropTypes from 'prop-types'
 import ServiceLink from '../../containers/App/service.link'
 
 const Results = ({services, term}) => {
-  if (term && !services.length) {
-    return (
-      <div className="container intro">
-        <div className="row">
-          <div className="col-sm-4"><h2>No results found!</h2></div>
-        </div>
-      </div>
-    )
+  if (!term || !services.length) {
+    return null
   }
 
   return (
-    <div className="container intro">
-      <div className="row">
+    <div className="results text-left">
+      <ul className="list-unstyled">
       {
         services.map((service) => (
           <ServiceLink
@@ -23,7 +17,7 @@ const Results = ({services, term}) => {
             {...service}
           />
         ))
-      }</div>
+      }</ul>
     </div>
   )
 }
