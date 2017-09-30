@@ -3,14 +3,8 @@ import PropTypes from 'prop-types'
 import ServiceLink from '../../containers/App/service.link'
 
 const Results = ({services, term}) => {
-  if (term && !services.length) {
-    return (
-      <div className="container intro">
-        <div className="row">
-          <div className="col-sm-4"><h2>No results found!</h2></div>
-        </div>
-      </div>
-    )
+  if (!term || !services.length) {
+    return null
   }
 
   return (
