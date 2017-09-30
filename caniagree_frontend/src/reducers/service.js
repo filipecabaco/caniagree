@@ -1,33 +1,36 @@
 import * as actionTypes from '../constants/action.types'
+import { getControversialParagraphs } from '../util/paragraph.utils'
 
 const initialState = {
   paragraphs: [],
   filteredParagraphs: [],
+  totalFilteredParagraphs: 0,
   serviceId: '',
   name: ''
 }
 
 const MIN_DOWN_VOTES = 900
 
-export default (state = initialState, {type, payload: {isToggled, paragraphs, serviceId, name, id} = {}} = {}) => {
+export default (state = initialState, {type, payload: {isToggled, paragraphs, serviceId, name, id, totalFilteredParagraphs = 0} = {}} = {}) => {
   switch (type) {
     case actionTypes.SET_PARAGRAPHS:
       return {
         paragraphs: [...paragraphs],
         filteredParagraphs: [...paragraphs],
         serviceId,
-        name
+        name,
+        totalFilteredParagraphs
       }
     case actionTypes.TOGGLE_PARAGRAPH:
-      const filtered = isToggled
-        ? state.paragraphs.filter((p) => p.down_vote > MIN_DOWN_VOTES)
-        : state.paragraphs
+      const stateparagraphs = state.paragraphs
+      const filtered = getControversialParagraphs(stateparagraphs)
 
       return {
-        paragraphs: state.paragraphs,
-        filteredParagraphs: filtered,
+        paragraphs: stateparagraphs,
+        filteredParagraphs: isToggled ? filtered : stateparagraphs,
         serviceId: state.serviceId,
-        name: state.name
+        name: state.name,
+        totalFilteredParagraphs: isToggled ? stateparagraphs.length : filtered.length
       }
     case actionTypes.UPVOTE_PARAGRAPH:
       return {

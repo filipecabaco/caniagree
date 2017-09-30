@@ -2,16 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import ParagraphFilter from './paragraphFilter'
-
-const UP_THRESHOLD = 0.8
-const DOWN_THRESHOLD = 0.4
-const VOTES_THRESHOLD = 10
+import { UP_THRESHOLD, DOWN_THRESHOLD, VOTES_THRESHOLD } from '../../constants/thresholds'
 
 const Summary = ({
   title,
   totalUpvotes = 0,
   totalDownvotes = 0,
-  onParagraphToggleClick,
+  totalFilteredParagraphs = 0,
+  onParagraphToggleClick
 }) => {
   const warningLevel = getWarningLevel(totalUpvotes, totalDownvotes)
 
@@ -22,7 +20,8 @@ const Summary = ({
         <div className="row">
           <SummaryMessage {...warningLevel} />
           <Votes totalUpvotes={totalUpvotes} totalDownvotes={totalDownvotes} />
-          <ParagraphFilter onToggleClick={onParagraphToggleClick} />
+          <ParagraphFilter onToggleClick={onParagraphToggleClick} 
+            totalFilteredParagraphs={totalFilteredParagraphs}/>
         </div>
       </section>
     </section>
@@ -119,6 +118,7 @@ Summary.propTypes = {
   title: PropTypes.string.isRequired,
   totalUpvotes: PropTypes.number.isRequired,
   totalDownvotes: PropTypes.number.isRequired,
+  totalFilteredParagraphs: PropTypes.number.isRequired,
   onParagraphToggleClick: PropTypes.func.isRequired
 }
 
