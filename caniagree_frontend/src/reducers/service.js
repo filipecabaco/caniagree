@@ -11,15 +11,31 @@ const initialState = {
 
 const MIN_DOWN_VOTES = 900
 
-export default (state = initialState, {type, payload: {isToggled, paragraphs, serviceId, name, id, totalFilteredParagraphs = 0} = {}} = {}) => {
+export default (
+  state = initialState,
+  {
+    type,
+    payload: {
+      isToggled,
+      paragraphs,
+      serviceId,
+      name,
+      id,
+      totalFilteredParagraphs = 0
+    } = {}
+  } = {}
+) => {
   switch (type) {
     case actionTypes.SET_PARAGRAPHS:
+      const originalFiltered = getControversialParagraphs(paragraphs)
       return {
         paragraphs: [...paragraphs],
-        filteredParagraphs: [...paragraphs],
+        filteredParagraphs: originalFiltered,
         serviceId,
         name,
-        totalFilteredParagraphs
+        totalFilteredParagraphs: isToggled
+          ? paragraphs.length
+          : originalFiltered.length
       }
     case actionTypes.TOGGLE_PARAGRAPH:
       const stateparagraphs = state.paragraphs
@@ -30,29 +46,47 @@ export default (state = initialState, {type, payload: {isToggled, paragraphs, se
         filteredParagraphs: isToggled ? filtered : stateparagraphs,
         serviceId: state.serviceId,
         name: state.name,
-        totalFilteredParagraphs: isToggled ? stateparagraphs.length : filtered.length
+        totalFilteredParagraphs: isToggled
+          ? stateparagraphs.length
+          : filtered.length
       }
     case actionTypes.UPVOTE_PARAGRAPH:
+      const stateParagraphsUp = state.paragraphs.map(paragraph => {
+        if (paragraph.id === id) {
+          paragraph.up_vote++
+        }
+
+        return paragraph
+      })
+
+      const filteredUp = getControversialParagraphs(stateParagraphsUp)
+
       return {
         ...state,
-        paragraphs: state.paragraphs.map((paragraph) => {
-          if (paragraph.id === id) {
-            paragraph.up_vote++
-          }
-
-          return paragraph
-        })
+        filteredParagraphs: isToggled ? filteredUp : stateParagraphsUp,
+        totalFilteredParagraphs: isToggled
+          ? stateParagraphsUp.length
+          : filteredUp.length,
+        paragraphs: stateParagraphsUp
       }
     case actionTypes.DOWNVOTE_PARAGRAPH:
+      const stateParagraphsDown = state.paragraphs.map(paragraph => {
+        if (paragraph.id === id) {
+          paragraph.down_vote++
+        }
+
+        return paragraph
+      })
+
+      const filteredDown = getControversialParagraphs(stateParagraphsDown)
+
       return {
         ...state,
-        paragraphs: state.paragraphs.map((paragraph) => {
-          if (paragraph.id === id) {
-            paragraph.down_vote++
-          }
-
-          return paragraph
-        })
+        filteredParagraphs: isToggled ? filteredDown : stateParagraphsDown,
+        totalFilteredParagraphs: isToggled
+          ? stateParagraphsDown.length
+          : filteredDown.length,
+        paragraphs: stateParagraphsDown
       }
     case actionTypes.CLEAR_PARAGRAPHS:
       return initialState
