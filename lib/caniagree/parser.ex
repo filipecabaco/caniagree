@@ -12,6 +12,6 @@ defmodule Caniagree.Parser do
     {:ok, resp} = HTTPoison.get(endpoint, headers)
     body = resp.body
     html = body |> Poison.decode! |> Map.get("content")
-    text = html |> Floki.text |> String.split("\n")
+    text = html |> Floki.text(sep: "\n") |> String.split("\n")
   end
 end

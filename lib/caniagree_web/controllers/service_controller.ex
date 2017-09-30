@@ -66,15 +66,19 @@ defmodule CaniagreeWeb.ServiceController do
 
   defp save_texts_and_get_ids([], result), do: result
   defp save_texts_and_get_ids([text | rest], result) do
-    id = insert_text(text)
-    new_result = result ++ [id]
-    save_texts_and_get_ids(rest, new_result)
+    if(text != "") do
+      id = insert_text(text)
+      new_result = result ++ [id]
+      save_texts_and_get_ids(rest, new_result)
+    else
+      nil
+    end
   end
 
   defp insert_text(text) do
-      {:ok, %{id: id}} = Caniagree.Services.create_paragraph(
-        %{body: text, up_vote: 0, down_vote: 0})
+    {:ok, %{id: id}} = Caniagree.Services.create_paragraph(
+      %{body: text, up_vote: 0, down_vote: 0})
 
-      id
+    id
   end
 end
