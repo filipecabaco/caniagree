@@ -10,6 +10,7 @@ const Service = ({
   onParagraphToggleClick,
   paragraphs,
   filteredParagraphs,
+  totalFilteredParagraphs,
   serviceId,
   name
 }) => {
@@ -33,7 +34,7 @@ const Service = ({
         totalDownvotes={totalDownvotes}
         onParagraphToggleClick={onParagraphToggleClick}
         totalParagraphs={paragraphs.length}
-        totalFilteredParagraphs={filteredParagraphs.length}
+        totalFilteredParagraphs={totalFilteredParagraphs}
       />
 
       <ParagraphsList
