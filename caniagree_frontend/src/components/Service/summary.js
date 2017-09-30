@@ -7,9 +7,9 @@ const UP_THRESHOLD = 0.8
 const DOWN_THRESHOLD = 0.4
 const VOTES_THRESHOLD = 10
 
-const Summary = ({ 
-  title, 
-  totalUpvotes = 0, 
+const Summary = ({
+  title,
+  totalUpvotes = 0,
   totalDownvotes = 0,
   onParagraphToggleClick,
 }) => {
@@ -71,7 +71,7 @@ const SummaryMessage = ({ warning, error, ok, neutral }) => {
   } else if (ok) {
     messageTitle = "It's OK"
     text =
-      'The terms of services are fair towards the user but they could be improved.'
+      'The terms of service are fair towards the user but they could be improved.'
   } else if (error) {
     messageTitle = 'Watch out!'
     text = 'The terms of service raise very serious concerns.'
@@ -101,7 +101,7 @@ const getWarningLevel = (totalUpvotes, totalDownvotes) => {
       error: false,
       ok: false,
       warning: false
-    }  
+    }
   }
 
   const error = upPercentage <= DOWN_THRESHOLD
