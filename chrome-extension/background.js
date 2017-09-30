@@ -5,7 +5,8 @@
 // Called when the user clicks on the browser action.
 
 let context = {
-    api_endpoint: "http://localhost:4000/"
+    api_endpoint: "https://caniagree-api.herokuapp.com/",
+    frontend_endpoint: "https://caniagree.herokuapp.com/"
 }
 
 chrome.browserAction.onClicked.addListener(function(tab) {
@@ -16,8 +17,8 @@ chrome.browserAction.onClicked.addListener(function(tab) {
         return response.json()
     }).then(function(data) {
       data.data.forEach(function(element) {
-        if(element.domain == tabUrl) {
-          let redirectUrl = context.api_endpoint + "service/" + element.id
+        if(tabUrl.includes(element.domain)) {
+          let redirectUrl = context.frontend_endpoint + "service/" + element.id
           chrome.tabs.create({ url: redirectUrl});
         }
       });
