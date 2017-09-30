@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Results from '../../containers/App/results'
 import { Form, FormGroup, Input } from 'reactstrap'
 
 class Search extends React.Component {
@@ -41,6 +42,7 @@ class Search extends React.Component {
             <button type="submit" className="input-search-btn"><i className="icon fa-search" aria-hidden="true"></i></button>
             <input type="text" className="form-control" autoFocus="true" placeholder="Search for a service. e.g.: Amazon, Facebook..." onChange={this.onChange} value={value} />
           </div>
+          <Results />
         </div>
       </Form>
     )

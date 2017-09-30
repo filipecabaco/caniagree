@@ -1,6 +1,5 @@
 import React from 'react'
 import Search from '../../containers/App/search'
-import Results from '../../containers/App/results'
 import logo from '../../../markup/assets/imgs/logo-small.svg'
 
 const App = () => {
@@ -26,7 +25,6 @@ const App = () => {
           </div>
         </div>
       </div>
-      <Results />
 
       <div className="container intro">
 
