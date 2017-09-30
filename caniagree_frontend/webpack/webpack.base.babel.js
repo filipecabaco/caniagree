@@ -62,7 +62,7 @@ module.exports = options => ({
     new webpack.BannerPlugin({
       banner: `CanIAgree Application`
     }),
-    new CopyWebpackPlugin([{ from: '../markup/assets', to: 'assets' }])
+    new CopyWebpackPlugin([{ from: 'markup/assets', to: 'assets' }])
   ]),
   resolve: {
     modules: ['src', 'node_modules'],

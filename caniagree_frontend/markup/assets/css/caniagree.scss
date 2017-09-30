@@ -1,0 +1,154 @@
+// compileOnSave: true
+
+// Colors & Variables
+$upvote: #178D81;
+$downvote: #D6494B;
+$grey-bg: #f1f4f5;
+$border-color: #ddd;
+
+h1, h2, h3, h4, .terms-header, .info {
+  font-family: Arial Rounded MT Bold,Helvetica Rounded,Roboto,sans-serif;
+}
+
+// Homepage
+.search-form {
+  background-color: $grey-bg;
+  padding-top:100px;
+  padding-bottom: 100px;
+  text-align: center;
+  border-bottom:1px solid $border-color;
+  margin-bottom:2rem;
+
+  .form-group {
+    margin-top:20px;
+  }
+}
+
+.intro {
+
+  h2 {
+    font-size: 2.2rem;
+
+  }
+}
+
+@media (max-width: 767px) {
+  .search-form {
+    padding-top:50px;
+    padding-bottom: 50px;
+  }
+}
+
+.latest {
+  margin-top:3rem;
+}
+
+// Results page
+header {
+  border-bottom: 1px solid $border-color;
+  background: $grey-bg;
+
+  h1 {
+    margin:0 0 5px;
+  }
+}
+
+.terms-header {
+  border-bottom:1px solid $border-color;
+
+  h2 {
+    margin: 2rem 0;
+  }
+}
+
+.alert-icon {
+  padding-left: 60px;
+
+  &>.icon {
+    top: 2px;
+    font-size: 30px;
+  }
+}
+
+.vote-summary {
+  font-size:2rem;
+  font-weight: bold;
+
+  span {
+    font-weight: 100;
+  }
+
+  .upvote {
+    color:$upvote;
+  }
+
+  .downvote {
+    color:$downvote;
+  }
+}
+
+
+.terms {
+  background: $grey-bg;
+  padding-top:2rem;
+  padding-bottom: 2rem;
+
+  .info {
+    opacity:0;
+    color:#a3afb7;
+    transition: opacity 0.3s ease-in-out;
+
+    a:hover,a:focus {
+      text-decoration: none;
+
+    }
+
+    .upvote a {
+      color: $upvote;
+
+      &:hover,&:focus {
+        color:#56BFB5;
+      }
+    }
+
+    .downvote a {
+      color: $downvote;
+
+      &:hover,&:focus {
+        color:#FA7A7A;
+      }
+    }
+  }
+
+  .text {
+    border-right:1px solid $border-color;
+
+    ::selection {
+      background: #EDD7F1;
+      color:#444;
+    }
+  }
+
+  .row {
+    &:hover,&:focus {
+      & > .info {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .terms {
+    .alert {
+      margin-bottom:10px;
+    }
+    .info {
+      opacity:1;
+      margin-bottom:4rem;
+    }
+    .text {
+      border-right: none;
+    }
+  }
+}

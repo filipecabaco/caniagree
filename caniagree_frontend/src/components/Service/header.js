@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import logo from '../../../../markup/assets/imgs/logo-small.svg'
+import logo from '../../../markup/assets/imgs/logo-small.svg'
 
 class Header extends React.Component {
   onClick = () =>
