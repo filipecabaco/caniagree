@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { UP_THRESHOLD, DOWN_THRESHOLD, VOTES_THRESHOLD } from '../../constants/thresholds'
+import getParagraphWarningLevel from '../../utils/paragraph.utils'
 
 const Paragraph = ({
   id,
@@ -12,31 +14,19 @@ const Paragraph = ({
   const upVoteHandler = () => onUpvoteClick({ id })
   const downVoteHandler = () => onDownvoteClick({ id })
 
-  const totalVotes = up_vote + down_vote
-  const ratio = up_vote / totalVotes
+  const { totalVotes, ratio, level } = getParagraphWarningLevel(up_vote, down_vote)
 
   return (
     <div className='row'>
+
       <div className='col-sm-8 text'>
         {
-          totalVotes >= 10
-            ? ratio >= 0.8
-              ? (
-                <div className='alert alert-alt alert-success' role='alert'>
-                  <p>{body}</p>
-                </div>
+          totalVotes > VOTES_THRESHOLD
+            ? (
+              <div className={'alert alert-alt alert-' + level} role='alert'>
+                <p>{body}</p>
+              </div>
               )
-              : ratio <= 0.4
-                ? (
-                  <div className='alert alert-alt alert-danger' role='alert'>
-                    <p>{body}</p>
-                  </div>
-                )
-                : (
-                  <div className='alert alert-alt alert-warning' role='alert'>
-                    <p>{body}</p>
-                  </div>
-                )
             : (<p>{body}</p>)
         }
       </div>

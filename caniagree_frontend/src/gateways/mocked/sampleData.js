@@ -94,20 +94,27 @@ const paragraphs = {
       {
         id: '1',
         body: "did't do nothing yet",
-        up_vote: randomVotes(),
-        down_vote: randomVotes()
+        up_vote: 0,
+        down_vote: 0
       },
       {
         id: '2',
         body: 'red alert in every test',
-        up_vote: randomVotes(),
-        down_vote: randomVotes()
+        up_vote: 10,
+        down_vote: 0
       },
       {
         id: '3',
         body: 'we are doing TDD, everything is ok and safe :)',
-        up_vote: randomVotes(),
-        down_vote: randomVotes()
+        up_vote: 0,
+        down_vote: 10
+      }
+      ,
+      {
+        id: '4',
+        body: 'So now we can go home and play our games without worries',
+        up_vote: 10,
+        down_vote: 10
       }
     ]
   },

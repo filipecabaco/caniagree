@@ -20,9 +20,10 @@ class ParagraphFilter extends React.Component {
     }
 
     render() {
+        const { totalParagraphs, totalFilteredParagraphs } = this.props
         const icon = this.state.isToggled
-            ? <span> <i className="icon fa-expand" aria-hidden="true"></i> Show all paragraphs </span> 
-            : <span> <i className="icon fa-compress" aria-hidden="true"></i> Show only controversial paragraphs </span> 
+            ? <span> <i className="icon fa-expand" aria-hidden="true"></i> Show all paragraphs ({totalParagraphs})</span> 
+            : <span> <i className="icon fa-compress" aria-hidden="true"></i> Show only controversial paragraphs ({totalFilteredParagraphs})</span> 
 
         return (
             <ul className="small list-inline">
@@ -37,7 +38,9 @@ class ParagraphFilter extends React.Component {
 }
 
 ParagraphFilter.propTypes = {
-    onToggleClick: PropTypes.func.isRequired
+    onToggleClick: PropTypes.func.isRequired,
+    totalParagraphs: PropTypes.number.isRequired,
+    totalFilteredParagraphs: PropTypes.number.isRequired,
 }
 
 export default ParagraphFilter

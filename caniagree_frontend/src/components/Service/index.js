@@ -32,6 +32,8 @@ const Service = ({
         totalUpvotes={totalUpvotes}
         totalDownvotes={totalDownvotes}
         onParagraphToggleClick={onParagraphToggleClick}
+        totalParagraphs={paragraphs.length}
+        totalFilteredParagraphs={filteredParagraphs.length}
       />
 
       <ParagraphsList
